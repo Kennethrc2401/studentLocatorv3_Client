@@ -45,16 +45,19 @@ const StudentRecordsList = () => {
             <table className="table table--studentRecords">
                 <thead className="table__thead">
                     <tr>
-                        <th scope="col" className="table__th studentRecord__status">Username</th>
-                        <th scope="col" className="table__th studentRecord__created">Created</th>
-                        {/* <th scope="col" className="table__th studentRecord__updated">Updated</th> */}
-                        <th scope="col" className="table__th studentRecord__name">Name</th>
-                        <th scope="col" className="table__th studentRecord__username">Student</th>
-                        <th scope="col" className="table__th studentRecord__edit">Edit</th>
+                        <th scope="col" className="table__th studentRecord__dateEnrolled">Enrolled</th>
+                        <th scope="col" className="table__th studentRecord__status">Name</th>
+                        <th scope="col" className="table__th studentRecord__created">Phone</th>
+                        <th scope="col" className="table__th studentRecord__name">Email</th>
+                        <th scope="col" className="table__th studentRecord__username">Address</th>
+                        <th scope="col" className="table__th studentRecord__expertise">Expertise</th>
+                        {/* <th scope="col" className="table__th studentRecord__edit">Edit</th> */}
                     </tr>
                 </thead>
+                
                 <tbody>
                     {tableContent}
+
                 </tbody>
             </table>
         )

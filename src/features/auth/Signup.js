@@ -2,16 +2,20 @@ import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice'
-import { useLoginMutation } from './authApiSlice'
+import { useSignupMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist'
 import useTitle from '../../hooks/useTitle'
 import PulseLoader from 'react-spinners/PulseLoader'
 
-const Login = () => {
-    useTitle('Student Locator: Login')
+const Signup = () => {
+    useTitle('Student Locator: Signup')
 
     const userRef = useRef()
     const errRef = useRef()
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [role, setRole] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
@@ -20,7 +24,7 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    const [login, { isLoading }] = useLoginMutation()
+    const [signup, { isLoading }] = useSignupMutation()
 
     useEffect(() => {
         userRef.current.focus()
@@ -34,7 +38,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const { accessToken } = await login({ username, password }).unwrap()
+            const { accessToken } = await signup({ username, password }).unwrap()
             dispatch(setCredentials({ accessToken }))
             setUsername('')
             setPassword('')
@@ -64,9 +68,9 @@ const Login = () => {
     const content = (
         <section className="public">
             <header>
-                <h1>Login</h1>
+                <h1>Signup</h1>
             </header>
-            <main className="login">
+            <main className="signup">
                 <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
                 <form className="form" onSubmit={handleSubmit}>
@@ -114,4 +118,4 @@ const Login = () => {
 
     return content
 }
-export default Login
+export default Signup

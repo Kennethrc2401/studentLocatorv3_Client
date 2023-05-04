@@ -4,15 +4,31 @@ import Public from './components/Public'
 import Login from './features/auth/Login';
 import DashLayout from './components/DashLayout'
 import Welcome from './features/auth/Welcome'
+// LISTS
 import NotesList from './features/notes/NotesList'
 import StudentRecordsList from './features/students/StudentRecordsList'
 import UsersList from './features/users/UsersList'
-import EditUser from './features/users/EditUser'
-import NewUserForm from './features/users/NewUserForm'
-import EditNote from './features/notes/EditNote'
+import BigDataAnalyticsTutorList from './features/tutoring/bigDataAnalyticsTutors/BigDataAnalyticsTutorList'
+import CyberSecurityTutorList from './features/tutoring/cyberSecurityTutors/CyberSecurityTutorList'
+import MachineLearningTutorList from './features/tutoring/machineLearningTutors/MachineLearningTutorList'
+import MobileAppGameDevelopmentTutorList from './features/tutoring/mobileAppGameDevelopmentTutors/MobileAppGameDevelopmentTutorList'
+// NEW
 import NewNote from './features/notes/NewNote'
-import EditStudentRecord from './features/students/EditStudentRecord'
+import NewUserForm from './features/users/NewUserForm'
 import NewStudentRecord from './features/students/NewStudentRecord'
+import NewBigDataAnalyticsTutor from './features/tutoring/bigDataAnalyticsTutors/NewBigDataAnalyticsTutor'
+import NewCyberSecurityTutor from './features/tutoring/cyberSecurityTutors/NewCyberSecurityTutor'
+import NewMachineLearningTutor from './features/tutoring/machineLearningTutors/NewMachineLearningTutor'
+import NewMobileAppGameDevelopmentTutor from './features/tutoring/mobileAppGameDevelopmentTutors/NewMobileAppGameDevelopmentTutor'
+// EDIT
+import EditUser from './features/users/EditUser'
+import EditNote from './features/notes/EditNote'
+import EditStudentRecord from './features/students/EditStudentRecord'
+import EditBigDataAnalyticsTutor from './features/tutoring/bigDataAnalyticsTutors/EditBigDataAnalyticsTutor'
+import EditCyberSecurityTutor from './features/tutoring/cyberSecurityTutors/EditCyberSecurityTutor'
+import EditMachineLearningTutor from './features/tutoring/machineLearningTutors/EditMachineLearningTutor'
+import EditMobileAppGameDevelopmentTutor from './features/tutoring/mobileAppGameDevelopmentTutors/EditMobileAppGameDevelopmentTutor'
+// AUTH
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
@@ -20,7 +36,7 @@ import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 function App() {
-  useTitle('Dan D. Repairs')
+  useTitle('Student Locator')
 
   return (
     <Routes>
@@ -55,6 +71,30 @@ function App() {
                   <Route index element={<StudentRecordsList />} />
                   <Route path=":id" element={<EditStudentRecord />} />
                   <Route path="new" element={<NewStudentRecord />} />
+                </Route>
+
+                <Route path="bigDataAnalyticsTutors">
+                  <Route index element={<BigDataAnalyticsTutorList />} />
+                  <Route path=":id" element={<EditBigDataAnalyticsTutor />} />
+                  <Route path="new" element={<NewBigDataAnalyticsTutor />} />
+                </Route>
+
+                <Route path="cyberSecurityTutors">
+                  <Route index element={<CyberSecurityTutorList />} />
+                  <Route path=":id" element={<EditCyberSecurityTutor />} />
+                  <Route path="new" element={<NewCyberSecurityTutor />} />
+                </Route>
+
+                <Route path="machineLearningTutors">
+                  <Route index element={<MachineLearningTutorList />} />
+                  <Route path=":id" element={<EditMachineLearningTutor />} />
+                  <Route path="new" element={<NewMachineLearningTutor />} />
+                </Route>
+
+                <Route path="mobileAppGameDevelopmentTutors">
+                  <Route index element={<MobileAppGameDevelopmentTutorList />} />
+                  <Route path=":id" element={<EditMobileAppGameDevelopmentTutor />} />
+                  <Route path="new" element={<NewMobileAppGameDevelopmentTutor />} />
                 </Route>
                 
               </Route>{/* End Dash */}

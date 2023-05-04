@@ -17,15 +17,15 @@ const StudentRecord = ({ studentRecordId }) => {
     if (studentRecord) {
         const created = new Date(studentRecord.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long' })
 
-        const updated = new Date(studentRecord.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long' })
+        // const updated = new Date(studentRecord.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long' })
 
         const handleEdit = () => navigate(`/dash/studentRecords/${studentRecordId}`)
 
         return (
             <tr className="table__row">
                 
+                {/* <td className="table__cell studentRecord__updated">{updated}</td> */}
                 <td className="table__cell studentRecord__created">{created}</td>
-                <td className="table__cell studentRecord__updated">{updated}</td>
                 <td className="table__cell studentRecord__name">{studentRecord.name}</td>
                 <td className="table__cell studentRecord__phone">{studentRecord.phone}</td>
                 <td className="table__cell studentRecord__email">{studentRecord.email}</td>
@@ -41,6 +41,7 @@ const StudentRecord = ({ studentRecordId }) => {
                     </button>
                 </td>
             </tr>
+            // Maybe add a <br /> tag here to separate the records
         )
 
     } else return null

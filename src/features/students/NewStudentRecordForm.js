@@ -86,7 +86,8 @@ const NewStudentRecordForm = ({ users }) => {
                             title="Save"
                             disabled={!canSave}
                         >
-                            <FontAwesomeIcon icon={faSave} />
+                            {/* <FontAwesomeIcon icon={faSave} /> */}
+                            Enroll
                         </button>
                     </div>
                 </div>
@@ -142,7 +143,7 @@ const NewStudentRecordForm = ({ users }) => {
                     onChange={onExpertiseChanged}
                 />
 
-                <label className="form__label form__checkbox-container" htmlFor="username">
+                {/* <label className="form__label form__checkbox-container" htmlFor="username">
                     ASSIGNED TO:</label>
                 <select
                     id="username"
@@ -152,7 +153,7 @@ const NewStudentRecordForm = ({ users }) => {
                     onChange={onUserIdChanged}
                 >
                     {options}
-                </select>
+                </select> */}
 
             </form>
         </>

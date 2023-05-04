@@ -59,11 +59,11 @@ const EditStudentRecordForm = ({ studentRecord, users }) => {
             await updateStudentRecord({
                 id: studentRecord.id, 
                 user: userId,
-                name: studentRecord.name, 
-                email: studentRecord.email, 
-                phone: studentRecord.phone, 
-                address: studentRecord.address, 
-                expertise: studentRecord.expertise,
+                name, 
+                email, 
+                phone, 
+                address, 
+                expertise,
             })
         }
     }
@@ -179,7 +179,7 @@ const EditStudentRecordForm = ({ studentRecord, users }) => {
                     onChange={onExpertiseChanged}
                 />
 
-                <div className="form__row">
+                {/* <div className="form__row">
                     <div className="form__divider">
 
                         <label className="form__label form__checkbox-container" htmlFor="studentRecord-username">
@@ -196,9 +196,9 @@ const EditStudentRecordForm = ({ studentRecord, users }) => {
                     </div>
                     <div className="form__divider">
                         <p className="form__created">Created:<br />{created}</p>
-                        {/* <p className="form__updated">Updated:<br />{updated}</p> */}
+                        <p className="form__updated">Updated:<br />{updated}</p>
                     </div>
-                </div>
+                </div> */}
             </form>
         </>
     )
