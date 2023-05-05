@@ -109,7 +109,6 @@ function App() {
 
 export default App;
 
-// Left off at: https://youtu.be/CvCiNeLnZ00?t=27117
 // https://github.com/gitdagray/mern_stack_course
 
 // Sample User - Hank - Employee
@@ -127,3 +126,15 @@ export default App;
 // Sample User - Mike - Manager
 // Username: Mike
 // Password: !mike948
+
+// Sample User - Kenneth - Admin
+// Username: Kennethrc
+// Password: Kerrcr@123
+
+// Sample User - John - Tutor
+// Username: Johnjoe
+// Password: Johnjoe@123
+
+// Sample User - Jane - Student
+// Username: Jane
+// Password: Jane@123

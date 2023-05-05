@@ -149,7 +149,7 @@ const EditBigDataAnalyticsTutorForm = ({ bigDataAnalyticsTutor, users }) => {
                 <input
                     className={`form__input ${validTutorIDClass}`}
                     id="bigDataAnalyticsTutor-tutorID"
-                    name="bigDataAnalyticsTutorTutorID"
+                    name="bigDataAnalyticsTutorID"
                     type="text"
                     autoComplete="off"
                     value={tutorID}

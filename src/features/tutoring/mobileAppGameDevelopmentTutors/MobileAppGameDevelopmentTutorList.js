@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const MobileAppGameDevelopmentTutorsList = () => {
     useTitle('Student Locator | Mobile App & Game Development Tutors')
 
-    const { username, isManager, isAdmin } = useAuth()
+    const { username, isManager, isAdmin, isTutor } = useAuth()
 
     const {
         data: mobileAppGameDevelopmentTutors,

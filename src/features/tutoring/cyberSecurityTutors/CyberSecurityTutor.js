@@ -48,6 +48,6 @@ const CyberSecurityTutor = ({ cyberSecurityTutorId }) => {
     } else return null
 }
 
-const memoizedNote = memo(CyberSecurityTutor)
+const memoizedCyberSecurityTutor = memo(CyberSecurityTutor)
 
-export default memoizedNote
+export default memoizedCyberSecurityTutor

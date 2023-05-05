@@ -48,6 +48,6 @@ const BigDataAnalyticsTutor = ({ bigDataAnalyticsTutorId }) => {
     } else return null
 }
 
-const memoizedNote = memo(BigDataAnalyticsTutor)
+const memoizedBigDataAnalyticsTutor = memo(BigDataAnalyticsTutor)
 
-export default memoizedNote
+export default memoizedBigDataAnalyticsTutor

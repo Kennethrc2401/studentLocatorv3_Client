@@ -48,6 +48,6 @@ const MobileAppGameDevelopmentTutor = ({ mobileAppGameDevelopmentTutorId }) => {
     } else return null
 }
 
-const memoizedNote = memo(MobileAppGameDevelopmentTutor)
+const memoizedMobileAppGameDevelopmentTutor = memo(MobileAppGameDevelopmentTutor)
 
-export default memoizedNote
+export default memoizedMobileAppGameDevelopmentTutor

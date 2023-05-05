@@ -48,6 +48,6 @@ const MachineLearningTutor = ({ machineLearningTutorId }) => {
     } else return null
 }
 
-const memoizedNote = memo(MachineLearningTutor)
+const memoizedMachineLearningTutor = memo(MachineLearningTutor)
 
-export default memoizedNote
+export default memoizedMachineLearningTutor
