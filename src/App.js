@@ -44,6 +44,7 @@ function App() {
         {/* public routes */}
         <Route index element={<Public />} />
         <Route path="login" element={<Login />} />
+        
 
         {/* Protected Routes */}
         <Route element={<PersistLogin />}>
@@ -61,13 +62,13 @@ function App() {
                   </Route>
                 </Route>
 
-                <Route path="notes">
+                <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />} path="notes">
                   <Route index element={<NotesList />} />
                   <Route path=":id" element={<EditNote />} />
                   <Route path="new" element={<NewNote />} />
                 </Route>
 
-                <Route path="studentRecords">
+                <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />} path="studentRecords">
                   <Route index element={<StudentRecordsList />} />
                   <Route path=":id" element={<EditStudentRecord />} />
                   <Route path="new" element={<NewStudentRecord />} />
@@ -108,6 +109,27 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // https://github.com/gitdagray/mern_stack_course
 

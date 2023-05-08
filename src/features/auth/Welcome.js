@@ -33,7 +33,7 @@ const Welcome = () => {
             <p><Link to="/dash/studentRecords">View Student Records</Link></p>
             <p><Link to="/dash/studentRecords/new">Add new Student Record</Link></p>
 
-             <p><Link to="/dash/notes">View Notes</Link></p>
+            <p><Link to="/dash/notes">View Notes</Link></p>
             <p><Link to="/dash/notes/new">Add New Notes</Link></p>
 
             {(isManager || isAdmin) && <p><Link to="/dash/users">View User Settings</Link></p>}

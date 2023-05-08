@@ -1,121 +1,148 @@
 import { useRef, useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setCredentials } from './authSlice'
-import { useSignupMutation } from './authApiSlice'
-import usePersist from '../../hooks/usePersist'
+// import { setCredentials } from './authSlice'
+// import { useSignupMutation } from './authApiSlice'
+// import usePersist from '../../hooks/usePersist'
 import useTitle from '../../hooks/useTitle'
 import PulseLoader from 'react-spinners/PulseLoader'
 
 const Signup = () => {
-    useTitle('Student Locator: Signup')
-
-    const userRef = useRef()
-    const errRef = useRef()
-
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [role, setRole] = useState('')
+    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    // const [signupMutation] = useSignupMutation()
+    const [errorMessage, setErrorMessage] = useState('')
+    const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [passwordsMatch, setPasswordsMatch] = useState(true)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [errMsg, setErrMsg] = useState('')
-    const [persist, setPersist] = usePersist()
+    const [confirmPassword, setConfirmPassword] = useState('')
 
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    useTitle('Student Locator: Signup')
 
-    const [signup, { isLoading }] = useSignupMutation()
+    const usernameRef = useRef()
+    const passwordRef = useRef()
+    const confirmPasswordRef = useRef()
 
     useEffect(() => {
-        userRef.current.focus()
+        usernameRef.current.focus()
     }, [])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [username, password])
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value)
+    }
 
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-            const { accessToken } = await signup({ username, password }).unwrap()
-            dispatch(setCredentials({ accessToken }))
-            setUsername('')
-            setPassword('')
-            navigate('/dash')
-        } catch (err) {
-            if (!err.status) {
-                setErrMsg('No Server Response');
-            } else if (err.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg(err.data?.message);
-            }
-            errRef.current.focus();
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+        if (e.target.value !== confirmPassword) {
+            setPasswordsMatch(false)
+        } else {
+            setPasswordsMatch(true)
         }
     }
 
-    const handleUserInput = (e) => setUsername(e.target.value)
-    const handlePwdInput = (e) => setPassword(e.target.value)
-    const handleToggle = () => setPersist(prev => !prev)
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value)
+        if (e.target.value !== password) {
+            setPasswordsMatch(false)
+        } else {
+            setPasswordsMatch(true)
+        }
+    }
 
-    const errClass = errMsg ? "errmsg" : "offscreen"
+    const handleShowPassword = () => {
+        setShowPassword(!showPassword)
+    }
 
-    if (isLoading) return <PulseLoader color={"#FFF"} />
+    const handleShowConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword)
+    }
+
+    const handleSignup = async (e) => {
+        e.preventDefault()
+        setLoading(true)
+        try {
+            // const { data, error } = await signupMutation({ username, password })
+            // if (error) {
+            //     setErrorMessage(error.message)
+            //     setLoading(false)
+            //     return
+            // }
+            // dispatch(setCredentials(data))
+            // usePersist('auth', data)
+            navigate('/dash')
+        } catch (err) {
+            setErrorMessage(err.message)
+            setLoading(false)
+        }
+    }
 
     const content = (
-        <section className="public">
-            <header>
-                <h1>Signup</h1>
-            </header>
-            <main className="signup">
-                <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
-
-                <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="username">Username:</label>
+        <section className="signup">
+            <h1>Signup</h1>
+            <form onSubmit={handleSignup}>
+                <div className="form-control">
+                    <label htmlFor="username">Username</label>
                     <input
-                        className="form__input"
                         type="text"
                         id="username"
-                        ref={userRef}
+                        ref={usernameRef}
                         value={username}
-                        onChange={handleUserInput}
-                        autoComplete="off"
+                        onChange={handleUsernameChange}
                         required
                     />
-
-                    <label htmlFor="password">Password:</label>
+                </div>
+                <div className="form-control">
+                    <label htmlFor="password">Password</label>
                     <input
-                        className="form__input"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
                         id="password"
-                        onChange={handlePwdInput}
+                        ref={passwordRef}
                         value={password}
+                        onChange={handlePasswordChange}
                         required
                     />
-                    <button className="form__submit-button">Sign In</button>
-
-
-                    <label htmlFor="persist" className="form__persist">
-                        <input
-                            type="checkbox"
-                            className="form__checkbox"
-                            id="persist"
-                            onChange={handleToggle}
-                            checked={persist}
-                        />
-                        Trust This Device
-                    </label>
-                </form>
-            </main>
-            <footer>
-                <Link to="/">Back to Home</Link>
-            </footer>
+                    <button type="button" onClick={handleShowPassword}>
+                        {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                </div>
+                <div className="form-control">
+                    <label htmlFor="confirmPassword">Confirm Password</label>
+                    <input
+                        type={showConfirmPassword ? 'text' : 'password'}
+                        id="confirmPassword"
+                        ref={confirmPasswordRef}
+                        value={confirmPassword}
+                        onChange={handleConfirmPasswordChange}
+                        required
+                    />
+                    <button type="button" onClick={handleShowConfirmPassword}>
+                        {showConfirmPassword ? 'Hide' : 'Show'}
+                    </button>
+                </div>
+                {!passwordsMatch && (
+                    <p className="error">Passwords do not match.</p>
+                )}
+                <div className="form-control">
+                    <button type="submit" disabled={!passwordsMatch}>
+                        {loading ? (
+                            <PulseLoader color="#fff" size={8} margin={4} />
+                        ) : (
+                            'Signup'
+                        )}
+                    </button>
+                </div>
+                {errorMessage && <p className="error">{errorMessage}</p>}
+            </form>
+            <p>
+                Already have an account? <Link to="/login">Login</Link>
+            </p>
         </section>
     )
 
-    return content
 }
+
 export default Signup

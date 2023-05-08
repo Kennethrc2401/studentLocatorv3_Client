@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const CyberSecurityTutorsList = () => {
     useTitle('Student Locator: Cyber Security Tutors')
 
-    const { username, isManager, isAdmin } = useAuth()
+    const { username, isManager, isAdmin, isStudent, isTutor} = useAuth()
 
     const {
         data: cyberSecurityTutors,
@@ -33,7 +33,7 @@ const CyberSecurityTutorsList = () => {
         const { ids, entities } = cyberSecurityTutors
 
         let filteredIds
-        if (isManager || isAdmin) {
+        if (isManager || isAdmin || isTutor || isStudent) {
             filteredIds = [...ids]
         } else {
             filteredIds = ids.filter(cyberSecurityTutorId => entities[cyberSecurityTutorId].username === username)

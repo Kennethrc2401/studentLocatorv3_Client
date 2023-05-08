@@ -33,7 +33,7 @@ const BigDataAnalyticsTutorsList = () => {
         const { ids, entities } = bigDataAnalyticsTutors
 
         let filteredIds
-        if (isManager || isAdmin) {
+        if (isManager || isAdmin || isTutor || isStudent) {
             filteredIds = [...ids]
         } else {
             filteredIds = ids.filter(bigDataAnalyticsTutorId => entities[bigDataAnalyticsTutorId].username === username)
@@ -43,6 +43,7 @@ const BigDataAnalyticsTutorsList = () => {
 
         content = (
             <table className="table table--bigDataAnalyticsTutors">
+                {/* <h1 style={{display: 'flex'}}>Big Data Analytics Tutors</h1> */}
                 <thead className="table__thead">
                     <tr>
                         <th scope="col" className="table__th bigDataAnalyticsTutor__dateEnrolled">Enrolled</th>
@@ -53,11 +54,14 @@ const BigDataAnalyticsTutorsList = () => {
                         <th scope="col" className="table__th bigDataAnalyticsTutor__expertise">Expertise</th>
                         {/* <th scope="col" className="table__th bigDataAnalyticsTutor__edit">Edit</th> */}
                     </tr>
+                    <tr>
+                        
+                    </tr>
                 </thead>
                 
                 <tbody>
                     {tableContent}
-
+                    
                 </tbody>
             </table>
         )

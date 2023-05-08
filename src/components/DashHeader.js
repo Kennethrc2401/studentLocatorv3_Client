@@ -5,7 +5,12 @@ import {
     faFilePen,
     faUserGear,
     faUserPlus,
-    faRightFromBracket
+    faRightFromBracket,
+    faDatabase,
+    faShieldAlt,
+    faRobot,
+    faCode,
+    faUserGraduate
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
@@ -197,7 +202,7 @@ const DashHeader = () => {
                 title="Student Records"
                 onClick={onStudentRecordsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faUserGraduate} />
             </button>
         )
     }
@@ -210,7 +215,7 @@ const DashHeader = () => {
                 title="Big Data Analytics Tutors"
                 onClick={onBigDataAnalyticsTutorsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faDatabase} />
             </button>
         )
     }
@@ -223,7 +228,7 @@ const DashHeader = () => {
                 title="Cyber Security Tutors"
                 onClick={onCyberSecurityTutorsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faShieldAlt} />
             </button>
         )
     }
@@ -236,7 +241,7 @@ const DashHeader = () => {
                 title="Machine Learning Tutors"
                 onClick={onMachineLearningTutorsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faRobot} />
             </button>
         )
     }
@@ -249,7 +254,7 @@ const DashHeader = () => {
                 title="Mobile App Game Development Tutors"
                 onClick={onMobileAppGameDevelopmentTutorsClicked}
             >
-                <FontAwesomeIcon icon={faFilePen} />
+                <FontAwesomeIcon icon={faCode} />
             </button>
         )
     }

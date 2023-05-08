@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const MobileAppGameDevelopmentTutorsList = () => {
     useTitle('Student Locator | Mobile App & Game Development Tutors')
 
-    const { username, isManager, isAdmin, isTutor } = useAuth()
+    const { username, isManager, isAdmin, isTutor, isStudent } = useAuth()
 
     const {
         data: mobileAppGameDevelopmentTutors,
@@ -33,7 +33,7 @@ const MobileAppGameDevelopmentTutorsList = () => {
         const { ids, entities } = mobileAppGameDevelopmentTutors
 
         let filteredIds
-        if (isManager || isAdmin) {
+        if (isManager || isAdmin || isTutor || isStudent) {
             filteredIds = [...ids]
         } else {
             filteredIds = ids.filter(mobileAppGameDevelopmentTutorId => entities[mobileAppGameDevelopmentTutorId].username === username)

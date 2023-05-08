@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 const MachineLearningTutorsList = () => {
     useTitle('Student Locator | Machine Learning Tutors')
 
-    const { username, isManager, isAdmin } = useAuth()
+    const { username, isManager, isAdmin, isStudent, isTutor } = useAuth()
 
     const {
         data: machineLearningTutors,
@@ -33,7 +33,7 @@ const MachineLearningTutorsList = () => {
         const { ids, entities } = machineLearningTutors
 
         let filteredIds
-        if (isManager || isAdmin) {
+        if (isManager || isAdmin || isTutor || isStudent) {
             filteredIds = [...ids]
         } else {
             filteredIds = ids.filter(machineLearningTutorId => entities[machineLearningTutorId].username === username)
